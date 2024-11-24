@@ -1,7 +1,8 @@
+// script.js
 document.getElementById("experiment-form").addEventListener("submit", async function(event) {
     event.preventDefault();  // Prevent form submission
 
-    const activation = document.getElementById("activation").value;
+    const activation = document.getElementById("activation").value.toLowerCase();
     const lr = parseFloat(document.getElementById("lr").value);
     const stepNum = parseInt(document.getElementById("step_num").value);
 
@@ -12,8 +13,8 @@ document.getElementById("experiment-form").addEventListener("submit", async func
         return;
     }
 
-    if (isNaN(lr)) {
-        alert("Please enter a valid number for learning rate.");
+    if (isNaN(lr) || lr <= 0) {
+        alert("Please enter a valid positive number for learning rate.");
         return;
     }
 
